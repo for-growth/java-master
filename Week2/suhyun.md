@@ -2,7 +2,7 @@
 
 - 람다식을 사용하려면, 메소드를 하나(=추상메소드) 가진 인터페이스가 필요하다.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/110001d7-b5e4-4360-903f-1a3250b75d15/5dee60e2-dfc7-4b4b-ac7f-3718eaa4877a/Untitled.png)
+![1](https://github.com/for-growth/java-master/assets/93717306/1ca38de8-e8a4-4b87-b35c-bec89e6d87d4)
 
 - A인터페이스를 구현한 클래스를 통해, A인터페이스 객체를 생성할 수 있다.
 - A인터페이스를 구현한 클래스를 만들지 않고도, 익명내부클래스를 통해 A인터페이스 객체를 생성할 수 있다.
@@ -24,11 +24,11 @@ a3.m();
 
 - 추상 메소드는 총 4가지의 종류를 갖는다. 즉, 람다식으로 사용할 수 있는 메소드의 형태는 총 4가지이다.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/110001d7-b5e4-4360-903f-1a3250b75d15/87dade24-c710-420e-8b42-632acde4f9c7/Untitled.png)
+![2](https://github.com/for-growth/java-master/assets/93717306/55680b2a-7e8a-45e5-99cb-e29182906ba5)
 
 - 람다식을 통해 위 4가지 인터페이스에 대한 객체를 모두 생성해보자.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/110001d7-b5e4-4360-903f-1a3250b75d15/938bb905-87af-4583-a90a-b940f5d5df55/Untitled.png)
+![3](https://github.com/for-growth/java-master/assets/93717306/e6c1c2a8-ef74-4fb7-85d1-60f9fbefd363)
 
 - 첫번째 경우(파라미터가 없고, 구현 부분이 한줄인 경우), 아래처럼 간소화할 수 있다.
 
@@ -57,7 +57,7 @@ D d = (x, y) -> x + y;
 
 - 또한, 람다식을 사용한 인터페이스에는 아래처럼 `@FuntionalInterface` 를 붙여준다. 이렇게 하면, 이 인터페이스에는 추상메소드 외에 다른 메소드를 추가할 수 없다.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/110001d7-b5e4-4360-903f-1a3250b75d15/577fc320-ce3d-40fe-8744-410d8cf687cb/Untitled.png)
+![4](https://github.com/for-growth/java-master/assets/93717306/3004c239-69fa-4c49-8774-fc053e7ce1d7)
 
 ---
 
