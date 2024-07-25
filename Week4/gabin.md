@@ -15,9 +15,9 @@
 ```java
 List<Integer> numbers = Arrays.asList(1,2,1,3,3,2,4);
 numbers.stream()
-				.filter(i -> i % 2 == 0) //짝수이면 줍줍
-				.distinct() //고유 요소만 줍줍
-				.forEach(System.out::println); 
+	.filter(i -> i % 2 == 0) //짝수이면 줍줍
+	.distinct() //고유 요소만 줍줍
+	.forEach(System.out::println); 
 ```
 
 &nbsp;
@@ -40,8 +40,8 @@ numbers.stream()
 //칼로리가 320 미만인 dish만 가지고 싶을 때
 List<Dish> sliceMenu1 
 = specialMenu.stream()
-							.takeWhile(dish -> dish.getCalories() < 320)
-							.collect(toList());
+	.takeWhile(dish -> dish.getCalories() < 320)
+	.collect(toList());
 ```
 
 예제 - dropWhile
@@ -50,8 +50,8 @@ List<Dish> sliceMenu1
 //칼로리가 320 초과인 dish만 가지고 싶을 때 
 List<Dish> sliceMenu2
 = specialMenu.stream()
-							.dropWhile(dish -> dish.getCalories() < 320)
-							.collect(toList());
+	.dropWhile(dish -> dish.getCalories() < 320)
+	.collect(toList());
 ```
 
 &nbsp;
@@ -66,9 +66,9 @@ List<Dish> sliceMenu2
 //칼로리가 300 초과인 dish 3개만 가지고 싶을 때
 List<Dish> dishes
 = specialMenu.stream()
-							.dropWhile(dish -> dish.getCalories() > 300)
-							.limit(3)
-							.collect(toList());
+	.dropWhile(dish -> dish.getCalories() > 300)
+	.limit(3)
+	.collect(toList());
 ```
 
 &nbsp;
@@ -83,9 +83,9 @@ List<Dish> dishes
 //칼로리가 300 초과인 dish에서 앞에 2요소는 원치 않을 때
 List<Dish> dishes
 = specialMenu.stream()
-							.dropWhile(dish -> dish.getCalories() > 300)
-							.skip(2)
-							.collect(toList());
+	.dropWhile(dish -> dish.getCalories() > 300)
+	.skip(2)
+	.collect(toList());
 ```
 &nbsp;
 
@@ -106,9 +106,9 @@ List<Dish> dishes
 //음식의 이름의 길이를 알고 싶을 때
 List<Integer> dishNameLengths 
 = menu.stream()
-			.map(Dish::getName)
-			.map(String::length)
-			.collect(toList());
+	.map(Dish::getName)
+	.map(String::length)
+	.collect(toList());
 ```
 
 &nbsp;
@@ -125,10 +125,10 @@ String[] words = {"Hello", "World"};
 
 List<String> uniqueChar
 = words.stream()                 //Stream<String>
-				.map(words -> split("")) //Stream<String[]> H e l l o / W o r l d
-				.flatMap(Arrays::stream) //Stream<String> H e l l o W o r l d
-				.distinct() //Stream<String> H e l o W r d
-				.collect(toList());
+	.map(words -> split("")) //Stream<String[]> H e l l o / W o r l d
+	.flatMap(Arrays::stream) //Stream<String> H e l l o W o r l d
+	.distinct() //Stream<String> H e l o W r d
+	.collect(toList());
 ```
 
 &nbsp;
@@ -163,11 +163,9 @@ if(menu.stream().anyMatch(Dish::isVegetarian)){
 
 ```java
 //모든 menu가 1000칼로리 이하인지 알고 싶을 때
-boolean isHealty = menu.stream()
-												.allMatch(dish -> dish.getCalories() < 1000);
+boolean isHealty = menu.stream().allMatch(dish -> dish.getCalories() < 1000);
 
-boolean isHealty = menu.stream()
-												.noneMatch(dish -> dish.getCalories() >= 1000);
+boolean isHealty = menu.stream().noneMatch(dish -> dish.getCalories() >= 1000);
 ```
 
 - anyMatch, allMatch, noneMatch 모두 스트림 쇼트서킷 기법(자바의 &&, || 연산 활용)
@@ -184,8 +182,8 @@ boolean isHealty = menu.stream()
 // menu에서 isVegetrian이 true인 아무 dish나 원할 때
 Optional<Dish> dish
 = menu.stream()
-			.filter(Dish::isVegetarian)
-			.findAny();p
+	.filter(Dish::isVegetarian)
+	.findAny();p
 ```
 
 &nbsp;
@@ -201,10 +199,10 @@ Optional<Dish> dish
 List<Integer> nums = Arrays.asList(1,2,3,4,5);
 Optional<Integer> firstSqaureDivisionByThree
 = nums.stream()
-			.map(n -> n*n)
-			.filter(n -> n%3 == 0)
-			.findFirst();
-			//9
+	.map(n -> n*n)
+	.filter(n -> n%3 == 0)
+	.findFirst();
+	//9
 ```
 
 findFirst vs findAny
