@@ -492,10 +492,10 @@ takeWhile은 자바 9에서만 지원하는 기능이라 아직 자바 8을 사�
 프레디케이트를 만족하는 가장 긴 첫 요소 리스트를 반환하는 함수는 책에 따르면 아래와 같이 작성할 수 있습니다.
 
 ```Java
-public static <A> List<A> takeWhile(List<A> list, Predicate<A> p) {
+public static <A> List<A> takeWhile(List<A> list, Predicate<A> p) {  
     int i = 0;
     for (A item : list) {
-        if (!p.test(item)) {
+        if (!p.test(item)) {  
             return list.subList(0, i);
         }
         i++;
