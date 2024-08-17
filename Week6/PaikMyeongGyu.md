@@ -500,7 +500,7 @@ takeWhile은 자바 9에서만 지원하는 기능이라 아직 자바 8을 사�
 public static <A> List<A> takeWhile(List<A> list, Predicate<A> p) {
     int i = 0;
     for (A item : list) {
-        if (!p.test(item)) {
+        if (!p.test(item)) {  
             return list.subList(0, i);
         }
         i++;
