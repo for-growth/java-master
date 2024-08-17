@@ -45,11 +45,6 @@ public interface Collector<T, A, R> {
 }
 ```
 
-※ 여기서 T, A, R의 의미는 다음과 같다.
-- T는 수집될 스트림 항목의 제네릭 형식
-- A는 누적자로 수집 과정에서 중간 결과를 누적하는 객체의 형식
-- R은 수집 연산 결과 객체의 형식(보통은 컬렉션 형식)을 의미한다.
-
 Collectors 클래스는 미리 Collector를 구현한 클래스 5가지 종류
 - 변환 : mapping(), toList(), toMap(), toCollection(), ...
 - 통계 : counting(), summingInt(), averagingInt(), maxBy(), minBy(), summarizingInt(),
@@ -500,7 +495,7 @@ takeWhile은 자바 9에서만 지원하는 기능이라 아직 자바 8을 사�
 public static <A> List<A> takeWhile(List<A> list, Predicate<A> p) {
     int i = 0;
     for (A item : list) {
-        if (!p.test(item)) {  
+        if (!p.test(item)) {
             return list.subList(0, i);
         }
         i++;
