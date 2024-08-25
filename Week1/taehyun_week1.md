@@ -30,14 +30,14 @@
 
 - 필터링할 색을 파라미터로 넘기면 좀더 상황에 대처할 수 있음
 ```java
-  public List<Apple> filterAppleByColor(List<Apple> inventory, Color color) {
-      List<Apple> sortingResult = new ArrayList<>();
-      for (Apple apple : inventory) {
-          if (apple.getColor().equals(color.getColor())) {
-              sortingResult.add(apple);
-          }
-      }
-      return sortingResult;
+public List<Apple> filterAppleByColor(List<Apple> inventory, Color color) {
+    List<Apple> sortingResult = new ArrayList<>();
+        for (Apple apple : inventory) {
+            if (apple.getColor().equals(color.getColor())) {
+                sortingResult.add(apple);
+        }
+    }
+    return sortingResult;
   }
   ```
 - 하지만 중복되는 코드가 많아서 좋다고 할 수 없음
@@ -48,15 +48,15 @@
 
 - 각 파라미터의 의미들이 모호하고 유연하게 대처할 수도 없으므로 좋지않은 방법
 ```java
-  public List<Apple> filterApples(List<Apple> inventory, Color color, int weight, Boolean flag) {
-      List<Apple> sortingResult = new ArrayList<>();
-      for (Apple apple : inventory) {
-          if (flag && apple.getColor().equals(color.getColor()) && apple.getWeight() > weight) {
-              sortingResult.add(apple);
-          }
-      }
-      return sortingResult;
-  }
+public List<Apple> filterApples(List<Apple> inventory, Color color, int weight, Boolean flag) {
+    List<Apple> sortingResult = new ArrayList<>();
+        for (Apple apple : inventory) {
+            if (flag && apple.getColor().equals(color.getColor()) && apple.getWeight() > weight) {
+                sortingResult.add(apple);
+            }
+        }
+    return sortingResult;
+}
 ```
 
 <br>
@@ -64,7 +64,7 @@
 ## 2.2 동작 파라미터화
 
 ```java
-    public interface ApplePredicate {
+public interface ApplePredicate {
 
     boolean test(Apple apple);
 
@@ -103,26 +103,26 @@ class AppleGreenColorPredicate implements ApplePredicate {
 
 - 메서드의 파라미터를 동작으로 정의함으로써 더 유연한 코드를 만들 수 있음
 ```java
-  static class AppleRedAndHeavyPredicate implements ApplePredicate {
+static class AppleRedAndHeavyPredicate implements ApplePredicate {
   
       @Override
-      public boolean test(Apple apple) {
-          return GREEN.getColor().equals(apple.getColor())
-                  && apple.getWeight() > 150;
-      }
-  }
+    public boolean test(Apple apple) {
+        return GREEN.getColor().equals(apple.getColor())
+            && apple.getWeight() > 150;
+    }
+}
   
   //...
   
-  public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p) {
-      List<Apple> result = new ArrayList<>();
-      for (Apple apple : inventory) {
-          if (p.test(apple)) {
-              result.add(apple);
-          }
-      }
-      return result;
-  }
+    public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p) {
+        List<Apple> result = new ArrayList<>();
+        for (Apple apple : inventory) {
+            if (p.test(apple)) {
+                result.add(apple);
+            }
+        }
+        return result;
+    }
   
   //...
   
@@ -181,9 +181,9 @@ List<Apple> appleList3 =
 ### 2.3.4 일곱번째 시도 : 리스트 형식으로 추상화
 
 ```java
-    public interface Predicate<T> {
+public interface Predicate<T> {
 
-    boolean test(T t);
+boolean test(T t);
 }
 
 //...
@@ -290,9 +290,8 @@ Future<String> threadName =
 
 ```java
 Button button = new Button("Send");
-button.
 
-setOnAction(new EventHandler<ActionEvent>() {
+button.setOnAction(new EventHandler<ActionEvent>() {
     public void handle (ActionEvent event){
         label.setText("Sent!!");
     }
@@ -300,11 +299,7 @@ setOnAction(new EventHandler<ActionEvent>() {
 
 //...
 
-        button.
-
-setOnAction((ActionEvent event) ->label.
-
-setText("Sent!!"));
+button.setOnAction((ActionEvent event) ->label.setText("Sent!!"));
 ```
 
 <br>
@@ -318,4 +313,21 @@ setText("Sent!!"));
 - 자마 API 의 많은 메서드는 정렬, 스레드, GUI 처리등을 포함한 다양한 동작으로 파라미터화할 수 있다.
 
 <br>
+
+### 사용 예시
+
+```java
+    public List<Car> judgeWinner() {
+        List<Car> participantsCars = participants.getCars();
+        int maxMovedDistance = participantsCars.stream().mapToInt(Car::getMovedDistance).max().orElse(0);
+        return participantsCars.stream()
+                .filter(car -> car.getMovedDistance() == maxMovedDistance)      //predicate 타입 파라미터 필요
+                .toList();
+    }
+
+```
+
+
 <br>
+<br>
+
